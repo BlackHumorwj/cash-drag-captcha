@@ -8,8 +8,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
+    "build": "rollup -c --bundleConfigAsCjs",
+    "dev": "rollup -c -w --bundleConfigAsCjs",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
@@ -36,6 +36,7 @@
     "@rollup/plugin-node-resolve": "^16.0.3",
     "rollup": "^4.61.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-vue": "^6.0.0"
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-vue": "^5.1.9"
   }
 }
