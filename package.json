@@ -1,5 +1,5 @@
 {
-  "name": "@cashlinker/cash-drag-captcha",
+  "name": "@blackhumorwj/cash-drag-captcha",
   "version": "1.0.0",
   "description": "滑动拼图验证码 Vue 组件",
   "main": "dist/cash-drag-captcha.common.js",
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cashlinker/cash-drag-captcha.git"
+    "url": "git+https://github.com/BlackHumorwj/cash-drag-captcha.git"
   },
   "keywords": [
     "vue",

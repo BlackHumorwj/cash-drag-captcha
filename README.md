@@ -1,11 +1,11 @@
-# @cashlinker/cash-drag-captcha
+# @blackhumorwj/cash-drag-captcha
 
 滑动拼图验证码 Vue 组件。基于 Vue 2 + Element UI + Axios。
 
 ## 安装
 
 ```bash
-npm install @cashlinker/cash-drag-captcha
+npm install @blackhumorwj/cash-drag-captcha
 ```
 
 需要同时安装 peer 依赖：
@@ -27,7 +27,7 @@ npm install vue element-ui axios
 </template>
 
 <script>
-import CashDragCaptcha from '@cashlinker/cash-drag-captcha'
+import CashDragCaptcha from '@blackhumorwj/cash-drag-captcha'
 
 export default {
   components: { CashDragCaptcha },
@@ -47,7 +47,7 @@ export default {
 
 ```js
 import Vue from 'vue'
-import CashDragCaptcha from '@cashlinker/cash-drag-captcha'
+import CashDragCaptcha from '@blackhumorwj/cash-drag-captcha'
 
 Vue.use(CashDragCaptcha) // 全局注册为 cash-drag-captcha 组件
 ```
