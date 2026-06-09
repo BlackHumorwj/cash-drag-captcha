@@ -1,0 +1,41 @@
+{
+  "name": "@cashlinker/cash-drag-captcha",
+  "version": "1.0.0",
+  "description": "滑动拼图验证码 Vue 组件",
+  "main": "dist/cash-drag-captcha.common.js",
+  "module": "dist/cash-drag-captcha.esm.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "axios": "^0.19.0",
+    "element-ui": "^2.11.0",
+    "vue": "^2.7.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cashlinker/cash-drag-captcha.git"
+  },
+  "keywords": [
+    "vue",
+    "captcha",
+    "drag",
+    "slider"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^29.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "rollup": "^4.61.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-vue": "^6.0.0"
+  }
+}
