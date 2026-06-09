@@ -22,15 +22,25 @@
 
 <script>
 import axios from 'axios'
+import captchaBodyView from './captcha-body-view.vue'
 
 export default {
   name: 'CashDragCaptcha',
 
+  components: { captchaBodyView },
+
+  provide() {
+    return { $dragCaptcha: this }
+  },
+
   props: {
-    url: { type: String, required: true },
+    url: { type: String, default: '' },
     visible: { type: Boolean, default: false },
     mode: { type: String, default: 'dialog' },
     captchaOnly: { type: Boolean, default: false },
+    appType: { type: String, default: '' },
+    channel: { type: String, default: '' },
+    versionCode: { type: String, default: '' },
   },
 
   data() {
@@ -98,10 +108,12 @@ export default {
       return (-this.targetX + this.piecePadding) + 'px ' + (-this.targetY + this.piecePadding) + 'px'
     },
     apiInitUrl() {
-      return `${this.url.replace(/\/+$/, '')}/global/dragCaptcha/init`
+      const base = `${this.url.replace(/\/+$/, '')}/global/dragCaptcha/init`
+      return this._appendUrlParams(base)
     },
     apiVerifyUrl() {
-      return `${this.url.replace(/\/+$/, '')}/global/dragCaptcha/verify`
+      const base = `${this.url.replace(/\/+$/, '')}/global/dragCaptcha/verify`
+      return this._appendUrlParams(base)
     },
   },
 
@@ -117,6 +129,13 @@ export default {
   },
 
   methods: {
+    _appendUrlParams(url) {
+      const params = []
+      if (this.appType) params.push(`appType=${encodeURIComponent(this.appType)}`)
+      if (this.channel) params.push(`channel=${encodeURIComponent(this.channel)}`)
+      if (this.versionCode) params.push(`versionCode=${encodeURIComponent(this.versionCode)}`)
+      return params.length ? `${url}?${params.join('&')}` : url
+    },
     dataUrlToBlobUrl(dataUri) {
       if (!dataUri) return ''
       if (!dataUri.startsWith('data:')) return dataUri

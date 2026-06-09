@@ -10,11 +10,12 @@
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
     "dev": "rollup -c -w --bundleConfigAsCjs",
+    "demo": "vite demo --config demo/vite.config.js",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "axios": "^0.19.0",
-    "element-ui": "^2.11.0",
+    "axios": "^0.19.2",
+    "element-ui": "^2.15.14",
     "vue": "^2.7.0"
   },
   "publishConfig": {
@@ -34,9 +35,14 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^29.0.3",
     "@rollup/plugin-node-resolve": "^16.0.3",
+    "@vitejs/plugin-vue2": "^2.3.4",
+    "axios": "^0.19.2",
+    "element-ui": "^2.15.14",
     "rollup": "^4.61.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-vue": "^5.1.9"
+    "rollup-plugin-vue": "^5.1.9",
+    "vite": "^5.4.21",
+    "vue": "^2.7.0"
   }
 }
