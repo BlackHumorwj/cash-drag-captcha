@@ -42,16 +42,26 @@
         height: $dragCaptcha.pieceDisplayHeight + 'px',
         left: $dragCaptcha.pieceAdjustedLeft + 'px',
         top: $dragCaptcha.pieceAdjustedTop + 'px',
-        backgroundImage: 'url(' + $dragCaptcha.pieceImage + ')',
-        backgroundSize: $dragCaptcha.pieceBackgroundSize,
-        backgroundPosition: $dragCaptcha.pieceBackgroundPosition,
-        backgroundRepeat: 'no-repeat',
         zIndex: 20,
         pointerEvents: 'none',
         filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))',
-        transition: 'left 0.05s linear'
+        transition: 'left 0.05s linear',
+        overflow: 'hidden'
       }"
-    ></div>
+    >
+      <img
+        :src="$dragCaptcha.pieceImage"
+        alt="拼图块"
+        :style="{
+          position: 'absolute',
+          width: $dragCaptcha.captchaWidth + 'px',
+          height: $dragCaptcha.captchaHeight + 'px',
+          left: ($dragCaptcha.piecePadding - $dragCaptcha.targetX) + 'px',
+          top: ($dragCaptcha.piecePadding - $dragCaptcha.targetY) + 'px',
+          pointerEvents: 'none'
+        }"
+      />
+    </div>
 
     <!-- 滑块轨道 -->
     <div class="slider-track" :style="{ width: $dragCaptcha.captchaWidth + 'px' }">

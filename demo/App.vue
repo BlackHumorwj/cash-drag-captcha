@@ -139,7 +139,7 @@
 </template>
 
 <script>
-import CashDragCaptcha from '../src/index.vue'
+import CashDragCaptcha from '@blackhumorwj/cash-drag-captcha'
 
 export default {
   name: 'App',

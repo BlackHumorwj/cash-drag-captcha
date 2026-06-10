@@ -45,5 +45,8 @@
     "vite": "^5.4.21",
     "vue": "^2.7.0",
     "vue-template-compiler": "^2.7.16"
+  },
+  "dependencies": {
+    "@blackhumorwj/cash-drag-captcha": "^1.0.2"
   }
 }

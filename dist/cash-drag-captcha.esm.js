@@ -198,6 +198,16 @@ import axios from 'axios';
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var script$1 = {
   name: 'CaptchaBodyView',
@@ -309,25 +319,44 @@ var __vue_render__$1 = function () {
       ),
       _vm._v(" "),
       _vm.$dragCaptcha.pieceImage
-        ? _c("div", {
-            staticClass: "slider-piece",
-            class: { "piece-dragging": _vm.$dragCaptcha.isDragging },
-            style: {
-              position: "absolute",
-              width: _vm.$dragCaptcha.pieceDisplayWidth + "px",
-              height: _vm.$dragCaptcha.pieceDisplayHeight + "px",
-              left: _vm.$dragCaptcha.pieceAdjustedLeft + "px",
-              top: _vm.$dragCaptcha.pieceAdjustedTop + "px",
-              backgroundImage: "url(" + _vm.$dragCaptcha.pieceImage + ")",
-              backgroundSize: _vm.$dragCaptcha.pieceBackgroundSize,
-              backgroundPosition: _vm.$dragCaptcha.pieceBackgroundPosition,
-              backgroundRepeat: "no-repeat",
-              zIndex: 20,
-              pointerEvents: "none",
-              filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))",
-              transition: "left 0.05s linear",
+        ? _c(
+            "div",
+            {
+              staticClass: "slider-piece",
+              class: { "piece-dragging": _vm.$dragCaptcha.isDragging },
+              style: {
+                position: "absolute",
+                width: _vm.$dragCaptcha.pieceDisplayWidth + "px",
+                height: _vm.$dragCaptcha.pieceDisplayHeight + "px",
+                left: _vm.$dragCaptcha.pieceAdjustedLeft + "px",
+                top: _vm.$dragCaptcha.pieceAdjustedTop + "px",
+                zIndex: 20,
+                pointerEvents: "none",
+                filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))",
+                transition: "left 0.05s linear",
+                overflow: "hidden",
+              },
             },
-          })
+            [
+              _c("img", {
+                style: {
+                  position: "absolute",
+                  width: _vm.$dragCaptcha.captchaWidth + "px",
+                  height: _vm.$dragCaptcha.captchaHeight + "px",
+                  left:
+                    _vm.$dragCaptcha.piecePadding -
+                    _vm.$dragCaptcha.targetX +
+                    "px",
+                  top:
+                    _vm.$dragCaptcha.piecePadding -
+                    _vm.$dragCaptcha.targetY +
+                    "px",
+                  pointerEvents: "none",
+                },
+                attrs: { src: _vm.$dragCaptcha.pieceImage, alt: "拼图块" },
+              }),
+            ]
+          )
         : _vm._e(),
       _vm._v(" "),
       _c(
