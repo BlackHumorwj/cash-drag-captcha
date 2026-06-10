@@ -140,8 +140,12 @@ export default {
       if (!dataUri) return ''
       if (!dataUri.startsWith('data:')) return dataUri
       try {
-        const [meta, base64] = dataUri.split(',')
-        const mime = meta.match(/:(.*?);/)[1]
+        const commaIdx = dataUri.indexOf(',')
+        if (commaIdx === -1) return dataUri
+        const meta = dataUri.slice(0, commaIdx)
+        const base64 = dataUri.slice(commaIdx + 1)
+        const mimeMatch = meta.match(/:(.*?);/)
+        const mime = mimeMatch ? mimeMatch[1] : 'image/png'
         const bytes = atob(base64.replace(/\s/g, ''))
         const len = bytes.length
         const buf = new Uint8Array(len)
@@ -151,6 +155,15 @@ export default {
         console.warn('Blob 转换失败，降级为 data URI', e)
         return dataUri
       }
+    },
+    // 规范化图片源：支持 data URI、http URL、裸 base64 三种格式
+    normalizeImageSrc(src) {
+      if (!src) return ''
+      if (src.startsWith('data:') || src.startsWith('http://') || src.startsWith('https://') || src.startsWith('//')) {
+        return src
+      }
+      // 裸 base64（如 image/png;base64,iVBOR...）
+      return 'data:' + src
     },
     revokeImageBlobs() {
       if (this._bgBlobUrl) { URL.revokeObjectURL(this._bgBlobUrl); this._bgBlobUrl = null }
@@ -163,12 +176,11 @@ export default {
         const c = resp.data && resp.data.returnData ? resp.data.returnData : resp.data
         this.token = c.token
         this.revokeImageBlobs()
-        const bgSrc = c.bgImage.startsWith('data:') ? c.bgImage : 'data:' + c.bgImage
-        const pieceSrc = c.pieceImage.startsWith('data:') ? c.pieceImage : 'data:' + c.pieceImage
-        this._bgBlobUrl = this.dataUrlToBlobUrl(bgSrc)
-        this.bgImage = this._bgBlobUrl
-        this._pieceBlobUrl = this.dataUrlToBlobUrl(pieceSrc)
-        this.pieceImage = this._pieceBlobUrl
+
+        // 处理背景图：兼容 data URI、http URL、裸 base64 三种格式
+        this.bgImage = this.normalizeImageSrc(c.bgImage)
+        this.pieceImage = this.normalizeImageSrc(c.pieceImage)
+
         this.captchaWidth = c.width
         this.captchaHeight = c.height
         this.pieceSizeInner = c.pieceSize

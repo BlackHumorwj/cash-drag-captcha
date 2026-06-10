@@ -1,6 +1,6 @@
 {
   "name": "@blackhumorwj/cash-drag-captcha",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "滑动拼图验证码 Vue 组件",
   "main": "dist/cash-drag-captcha.common.js",
   "module": "dist/cash-drag-captcha.esm.js",
@@ -43,6 +43,7 @@
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-vue": "^5.1.9",
     "vite": "^5.4.21",
-    "vue": "^2.7.0"
+    "vue": "^2.7.0",
+    "vue-template-compiler": "^2.7.16"
   }
 }
